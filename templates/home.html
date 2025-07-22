@@ -1,48 +1,87 @@
 <!DOCTYPE html>
-<html >
-
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>ML API</title>
-  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+    <meta charset="UTF-8">
+    <title>Boston House Price Predictor</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-image: url('https://images.unsplash.com/photo-1568605114967-8130f3a36994');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
 
-  
+        .form-container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0px 0px 20px rgba(0,0,0,0.2);
+            width: 450px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+
+        input[type="text"], input[type="number"] {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            background-color: #3498db;
+            color: white;
+            padding: 12px;
+            margin-top: 20px;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #2980b9;
+        }
+
+        .prediction {
+            margin-top: 20px;
+            font-size: 18px;
+            text-align: center;
+            color: green;
+        }
+    </style>
 </head>
-
 <body>
- <div class="login">
-	<h1>Boston House Price Prediction</h1>
+    <div class="form-container">
+        <h1>Boston House Price Predictor</h1>
+        <form action="/predict" method="post">
+            <input type="number" name="CRIM" placeholder="CRIM - Crime rate" required>
+            <input type="number" name="ZN" placeholder="ZN - Residential land zoned" required>
+            <input type="number" name="INDUS" placeholder="INDUS - Industrial proportion" required>
+            <input type="number" name="CHAS" placeholder="CHAS - River (0 or 1)" required>
+            <input type="number" name="NOX" step="0.01" placeholder="NOX - Nitric oxide" required>
+            <input type="number" name="RM" placeholder="RM - Average rooms per dwelling" required>
+            <input type="number" name="AGE" placeholder="AGE - Age of building" required>
+            <input type="number" name="DIS" step="0.1" placeholder="DIS - Distance to employment" required>
+            <input type="submit" value="Predict Price">
+        </form>
 
-     <!-- Main Input For Receiving Query to our ML -->
-    <form action="{{ url_for('predict')}}"method="post">
-      <input type="text" name="CRIM" placeholder="CRIM" required="required" /><br>
-    	<input type="text" name="ZN" placeholder="ZN" required="required" /><br>
-        <input type="text" name="INDUS" placeholder="INDUS" required="required" /><br>
-        <input type="text" name="CHAS" placeholder="CHAS" required="required" /><br>
-        <input type="text" name="NOX" placeholder="NOX" required="required" /><br>
-        <input type="text" name="RM" placeholder="RM" required="required" /><br>
-        <input type="text" name="Age" placeholder="Age" required="required" /><br>
-        <input type="text" name="DIS" placeholder="DIS" required="required" /><br>
-        <input type="text" name="RAD" placeholder="RAD" required="required" /><br>
-        <input type="text" name="TAX" placeholder="TAX" required="required" /><br>
-        <input type="text" name="PTRATIO" placeholder="PTRATIO" required="required" /><br>
-        <input type="text" name="B" placeholder="B" required="required" /><br>
-        <input type="text" name="LSTAT" placeholder="LSTAT" required="required" /><br>
-
-       
-
-        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
-    </form>
-
-   <br>
-   <br>
-  
-   
- </div>
- {{prediction_text}}
-
+        {% if prediction_text %}
+            <div class="prediction">{{ prediction_text }}</div>
+        {% endif %}
+    </div>
 </body>
 </html>
