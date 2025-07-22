@@ -85,7 +85,7 @@
   <div class="login">
     <h1>Boston House Price Prediction</h1>
 
-    <<form action="/predict" method="post">
+    <form action="/predict" method="post">
         <input type="text" name="CRIM" placeholder="CRIM - Crime rate" required />
         <input type="text" name="ZN" placeholder="ZN - Residential land zoned" required />
         <input type="text" name="INDUS" placeholder="INDUS - Industrial proportion" required />
@@ -99,7 +99,7 @@
         <input type="text" name="PTRATIO" placeholder="PTRATIO - Pupil-teacher ratio" required />
         <input type="text" name="B" placeholder="B - Proportion of Black population" required />
         <input type="text" name="LSTAT" placeholder="LSTAT - % lower status of populatio" required />
-        <button type="submit">Predict</button>
+        <button type="submit">Predict price</button>
     </form>
 
     {% if prediction_text %}
