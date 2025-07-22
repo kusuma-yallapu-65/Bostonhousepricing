@@ -68,15 +68,20 @@
     <div class="form-container">
         <h1>Boston House Price Predictor</h1>
         <form action="/predict" method="post">
-            <input type="number" name="CRIM" placeholder="CRIM - Crime rate" required>
-            <input type="number" name="ZN" placeholder="ZN - Residential land zoned" required>
-            <input type="number" name="INDUS" placeholder="INDUS - Industrial proportion" required>
-            <input type="number" name="CHAS" placeholder="CHAS - River (0 or 1)" required>
-            <input type="number" name="NOX" step="0.01" placeholder="NOX - Nitric oxide" required>
-            <input type="number" name="RM" placeholder="RM - Average rooms per dwelling" required>
-            <input type="number" name="AGE" placeholder="AGE - Age of building" required>
-            <input type="number" name="DIS" step="0.1" placeholder="DIS - Distance to employment" required>
-            <input type="submit" value="Predict Price">
+            <input type="text" name="CRIM" placeholder="CRIM" required="required" /><br>
+            <input type="text" name="ZN" placeholder="ZN" required="required" /><br>
+            <input type="text" name="INDUS" placeholder="INDUS" required="required" /><br>
+            <input type="text" name="CHAS" placeholder="CHAS" required="required" /><br>
+            <input type="text" name="NOX" placeholder="NOX" required="required" /><br>
+            <input type="text" name="RM" placeholder="RM" required="required" /><br>
+            <input type="text" name="Age" placeholder="Age" required="required" /><br>
+            <input type="text" name="DIS" placeholder="DIS" required="required" /><br>
+            <input type="text" name="RAD" placeholder="RAD" required="required" /><br>
+            <input type="text" name="TAX" placeholder="TAX" required="required" /><br>
+            <input type="text" name="PTRATIO" placeholder="PTRATIO" required="required" /><br>
+            <input type="text" name="B" placeholder="B" required="required" /><br>
+            <input type="text" name="LSTAT" placeholder="LSTAT" required="required" /><br>
+
         </form>
 
         {% if prediction_text %}
